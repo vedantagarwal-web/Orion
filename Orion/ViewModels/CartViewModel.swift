@@ -1,12 +1,6 @@
-//
-//  CartViewModel.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/24/24.
-//
-
 import Foundation
-import SwiftUI
+import Combine
+
 class CartViewModel: ObservableObject {
     @Published var cartItems: [CartItem] = []
     
@@ -32,8 +26,7 @@ class CartViewModel: ObservableObject {
         }
     }
     
-    func checkout() {
-        // Implement checkout logic
-        print("Checkout initiated")
+    func clearCart() {
+        cartItems.removeAll()
     }
 }

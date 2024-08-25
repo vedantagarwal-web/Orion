@@ -1,104 +1,68 @@
-//
-//  UserViewModel.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/24/24.
-//
-
-
-// ViewModels/UserViewModel.swift
 import Foundation
-import SwiftUI
 import Combine
 
-
 class UserViewModel: ObservableObject {
+    @Published var currentUser: User?
     @Published var isLoggedIn: Bool = false
-    @Published var currentUser: User? = nil
-    @Published var events: [Event] = []  // Holds all events associated with the user
-    @Published var notificationsEnabled: Bool = true  // For notification settings
-
-    // Computed property to filter and return only upcoming events
-    var upcomingEvents: [Event] {
-        events.filter { $0.date > Date() }
-    }
+    @Published var favoriteEvents: [Event] = []
     
-    // Computed property to filter and return only past events
-    var pastEvents: [Event] {
-        events.filter { $0.date <= Date() }
-    }
+    private var cancellables = Set<AnyCancellable>()
     
-    func login(name: String, email: String, profileImageUrl: String? = nil) {
-        self.currentUser = User(name: name, email: email, profileImageUrl: profileImageUrl)
-        self.isLoggedIn = true
-        
-        // Example: Populate the events array with sample events for the logged-in user
-        self.events = [
-            Event(
-                title: "Concert Night",
-                date: Date().addingTimeInterval(86400),
-                venue: "Music Hall",
-                description: "An electrifying concert night with the best bands in town.",
-                price: 50.00,
-                image: "concert"
-            ),
-            Event(
-                title: "Drama Night",
-                date: Date().addingTimeInterval(172800),
-                venue: "City Theater",
-                description: "A dramatic evening featuring an award-winning play.",
-                price: 35.00,
-                image: "drama"
-            ),
-            Event(
-                title: "Past Event",
-                date: Date().addingTimeInterval(-86400),
-                venue: "Old Arena",
-                description: "An event from the past that was a huge success.",
-                price: 20.00,
-                image: "past_event"
-            )
-        ]
+    func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
+        // Simulate network request
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // In a real app, validate credentials against a server
+            if email == "user@example.com" && password == "password" {
+                self.currentUser = User(id: UUID(), name: "John Doe", email: email)
+                self.isLoggedIn = true
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
     
     func logout() {
-        self.currentUser = nil
-        self.isLoggedIn = false
-        self.events = []
+        currentUser = nil
+        isLoggedIn = false
+        favoriteEvents = []
     }
     
-    func signup(name: String, email: String, password: String) {
-        // Simulate sign-up logic; in a real app, you'd interact with a backend service
-        let profileImageUrl = "https://example.com/profile.jpg" // Placeholder image URL
-        self.currentUser = User(name: name, email: email, profileImageUrl: profileImageUrl)
-        self.isLoggedIn = true
-        
-        // Populate the events array with sample events upon sign-up
-        self.events = [
-            Event(
-                title: "Concert Night",
-                date: Date().addingTimeInterval(86400),
-                venue: "Music Hall",
-                description: "An electrifying concert night with the best bands in town.",
-                price: 50.00,
-                image: "concert"
-            ),
-            Event(
-                title: "Drama Night",
-                date: Date().addingTimeInterval(172800),
-                venue: "City Theater",
-                description: "A dramatic evening featuring an award-winning play.",
-                price: 35.00,
-                image: "drama"
-            ),
-            Event(
-                title: "Past Event",
-                date: Date().addingTimeInterval(-86400),
-                venue: "Old Arena",
-                description: "An event from the past that was a huge success.",
-                price: 20.00,
-                image: "past_event"
-            )
-        ]
+    func signup(name: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
+        // Simulate network request
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // In a real app, send user data to a server
+            self.currentUser = User(id: UUID(), name: name, email: email)
+            self.isLoggedIn = true
+            completion(true)
+        }
+    }
+    
+    func updateProfile(name: String, email: String) {
+        guard var user = currentUser else { return }
+        user.name = name
+        user.email = email
+        currentUser = user
+        // In a real app, send updated profile to a server
+    }
+    
+    func updateProfileImage(url: String) {
+        guard var user = currentUser else { return }
+        user.profileImageUrl = url
+        currentUser = user
+        // In a real app, send updated profile to a server
+    }
+    
+    func toggleFavorite(_ event: Event) {
+        if let index = favoriteEvents.firstIndex(where: { $0.id == event.id }) {
+            favoriteEvents.remove(at: index)
+        } else {
+            favoriteEvents.append(event)
+        }
+        // In a real app, sync favorites with a server
+    }
+    
+    func isFavorite(_ event: Event) -> Bool {
+        favoriteEvents.contains(where: { $0.id == event.id })
     }
 }
