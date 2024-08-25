@@ -6,8 +6,6 @@
 //
 
 import Foundation
-// Views/ProfileView.swift
-
 import SwiftUI
 import UIKit
 
@@ -16,6 +14,8 @@ struct ProfileView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var editedName: String = ""
+    @State private var isEditingName = false
 
     var body: some View {
         NavigationView {
@@ -24,7 +24,14 @@ struct ProfileView: View {
                     VStack(alignment: .leading, spacing: 20) {
                         // Profile Header
                         VStack {
-                            if let imageUrl = user.profileImageUrl, let url = URL(string: imageUrl) {
+                            if let inputImage = inputImage {
+                                Image(uiImage: inputImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 10)
+                            } else if let imageUrl = user.profileImageUrl, let url = URL(string: imageUrl) {
                                 AsyncImage(url: url) { image in
                                     image
                                         .resizable()
@@ -43,10 +50,31 @@ struct ProfileView: View {
                                     .frame(width: 100, height: 100)
                             }
                             
-                            Text(user.name)
-                                .font(.title)
-                                .fontWeight(.bold)
+                            Button("Change Photo") {
+                                showingImagePicker = true
+                            }
+                            .foregroundColor(.blue)
+                            .padding(.top, 10)
+                            
+                            if isEditingName {
+                                TextField("Enter your name", text: $editedName, onCommit: {
+                                    userViewModel.currentUser?.name = editedName
+                                    isEditingName = false
+                                })
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .foregroundColor(.white)
+                                .padding(.top, 10)
+                            } else {
+                                Text(user.name)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
+                                    .onTapGesture {
+                                        editedName = user.name
+                                        isEditingName = true
+                                    }
+                            }
+                            
                             Text(user.email)
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
@@ -131,7 +159,14 @@ struct ProfileView: View {
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
-        // Handle the image update
-        userViewModel.currentUser?.profileImageUrl = "new_image_url_after_upload" // Placeholder for actual image update logic
+        // In a real app, you'd upload the image to your server and get a URL in response.
+        // Update the profile image in the user model.
+        userViewModel.currentUser?.profileImageUrl = saveImageAndGetURL(inputImage)
+    }
+
+    func saveImageAndGetURL(_ image: UIImage) -> String {
+        // Placeholder: Simulate saving the image and returning its URL.
+        // Replace this with actual code to save the image and get its URL.
+        return "new_image_url_after_upload"
     }
 }
