@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-import SwiftUI
+// import GoogleSignIn
 
 struct LoginView: View {
     @EnvironmentObject var userViewModel: UserViewModel
@@ -18,9 +18,9 @@ struct LoginView: View {
     @State private var password = ""
     @State private var showingAlert = false
     @State private var alertMessage = ""
-    
+
     var body: some View {
-        NavigationView {
+        VStack {
             Form {
                 Section(header: Text("Login Information")) {
                     TextField("Email", text: $email)
@@ -28,7 +28,7 @@ struct LoginView: View {
                         .autocapitalization(.none)
                     SecureField("Password", text: $password)
                 }
-                
+
                 Section {
                     Button(action: login) {
                         Text("Log In")
@@ -38,7 +38,25 @@ struct LoginView: View {
                     .tint(.red)
                 }
             }
-            .navigationTitle("Log In")
+            
+            VStack(spacing: 20) {
+                // Comment out the Google Sign-In button
+                /*
+                Button(action: handleGoogleSignIn) {
+                    HStack {
+                        Image(systemName: "g.circle.fill")
+                        Text("Sign in with Google")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                }
+                .padding(.horizontal)
+                */
+            }
+            .padding(.top)
         }
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
@@ -51,15 +69,14 @@ struct LoginView: View {
             showingAlert = true
             return
         }
-        
-        // Simulated user data, since no backend is implemented
-        let name = "John Doe" // Placeholder for a user's name; in a real app, this would come from a backend or user input.
-        let profileImageUrl = "https://example.com/profile.jpg" // Placeholder URL
-
-        // Call login on the userViewModel with the simulated user data
-        userViewModel.login(name: name, email: email, profileImageUrl: profileImageUrl)
-        
-        // Dismiss the login view after logging in
+        userViewModel.login(name: "John Doe", email: email, profileImageUrl: "https://example.com/profile.jpg")
         presentationMode.wrappedValue.dismiss()
     }
+    
+    // Comment out this function
+    /*
+    private func handleGoogleSignIn() {
+        // Implement Google Sign-In logic here
+    }
+    */
 }

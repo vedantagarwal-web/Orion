@@ -7,11 +7,20 @@
 
 import Foundation
 import SwiftUI
+
 struct EventDetailView: View {
     let event: Event
     @State private var quantity = 1
     @EnvironmentObject var cartViewModel: CartViewModel
     @Environment(\.presentationMode) var presentationMode
+
+    // DateFormatter to format the event date
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }
     
     var body: some View {
         ScrollView {
@@ -19,16 +28,19 @@ struct EventDetailView: View {
                 Image(event.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(height: 200)
+                    .frame(height: 250)
                     .clipped()
                     .cornerRadius(10)
-                
+                    .shadow(radius: 10)
+                    .padding(.bottom, 20)
+
                 VStack(alignment: .leading, spacing: 10) {
                     Text(event.title)
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
                     
-                    Text(event.date)
+                    // Display the formatted date
+                    Text(dateFormatter.string(from: event.date))
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     
@@ -65,6 +77,7 @@ struct EventDetailView: View {
                             .background(Color.red)
                             .foregroundColor(.white)
                             .cornerRadius(10)
+                            .shadow(radius: 10)
                     }
                     .padding(.top, 20)
                 }

@@ -11,7 +11,7 @@ import Foundation
 struct Event: Identifiable {
     let id = UUID()
     let title: String
-    let date: String
+    let date: Date
     let venue: String
     let description: String
     let price: Double

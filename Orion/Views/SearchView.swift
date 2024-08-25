@@ -1,20 +1,24 @@
-//
-//  SearchView.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/24/24.
-//
-
-import Foundation
 import SwiftUI
+import Foundation
 
 struct SearchView: View {
     @State private var searchText = ""
+    @State private var selectedLocation = "All"
     @StateObject private var viewModel = EventViewModel()
+    
+    let locations = ["All", "Kuala Lumpur", "Penang", "Johor Bahru", "Ipoh"] // Add more locations as needed
     
     var body: some View {
         NavigationView {
             VStack {
+                Picker("Location", selection: $selectedLocation) {
+                    ForEach(locations, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+
                 TextField("Search events...", text: $searchText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
@@ -29,7 +33,10 @@ struct SearchView: View {
             .navigationTitle("Search")
         }
         .onChange(of: searchText) { _ in
-            viewModel.search(query: searchText)
+            viewModel.search(query: searchText, location: selectedLocation)
+        }
+        .onChange(of: selectedLocation) { _ in
+            viewModel.search(query: searchText, location: selectedLocation)
         }
     }
 }

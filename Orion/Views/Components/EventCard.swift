@@ -11,6 +11,14 @@ import SwiftUI
 struct EventCard: View {
     let event: Event
     
+    // DateFormatter to format the event date
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none // Use .short if you want to include time
+        return formatter
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Image(event.image)
@@ -25,7 +33,8 @@ struct EventCard: View {
                     .font(.system(size: 18, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 
-                Text(event.date)
+                // Use the DateFormatter to display the date as a String
+                Text(dateFormatter.string(from: event.date))
                     .font(.system(size: 14, design: .rounded))
                     .foregroundColor(.gray)
                 
@@ -46,4 +55,3 @@ struct EventCard: View {
         .padding(.horizontal)
     }
 }
-

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F3ABA192C7AAC700041EF60 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3ABA182C7AAC700041EF60 /* ImagePicker.swift */; };
+		6F3ABA1B2C7AC05C0041EF60 /* RefineSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3ABA1A2C7AC05C0041EF60 /* RefineSearchView.swift */; };
 		6F4256302C79DA5F009CC74F /* OrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F42562F2C79DA5F009CC74F /* OrionApp.swift */; };
 		6F4256322C79DA5F009CC74F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4256312C79DA5F009CC74F /* ContentView.swift */; };
 		6F4256342C79DA62009CC74F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4256332C79DA62009CC74F /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		6F4256892C79E5A2009CC74F /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4256882C79E5A2009CC74F /* CartItem.swift */; };
 		6F42568B2C79E5E2009CC74F /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F42568A2C79E5E2009CC74F /* CartViewModel.swift */; };
 		6F42568D2C79E629009CC74F /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F42568C2C79E629009CC74F /* EventDetailView.swift */; };
+		90CBFFF2556E219569B69EB1 /* Pods_OrionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BA7C60673DA0CC7314475EC /* Pods_OrionTests.framework */; };
+		A26D70695E72DB6641FFB594 /* Pods_OrionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AE7418EA102612499226FB /* Pods_OrionUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100DBEBBBE15F9162B0BACA4 /* Pods-OrionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrionTests.release.xcconfig"; path = "Target Support Files/Pods-OrionTests/Pods-OrionTests.release.xcconfig"; sourceTree = "<group>"; };
+		1899AB967B5F0893C8E6B5F2 /* Pods-OrionUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrionUITests.release.xcconfig"; path = "Target Support Files/Pods-OrionUITests/Pods-OrionUITests.release.xcconfig"; sourceTree = "<group>"; };
+		47E146067BE9AB5B4148D3F8 /* Pods-OrionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrionTests.debug.xcconfig"; path = "Target Support Files/Pods-OrionTests/Pods-OrionTests.debug.xcconfig"; sourceTree = "<group>"; };
+		62AE7418EA102612499226FB /* Pods_OrionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA7C60673DA0CC7314475EC /* Pods_OrionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F3ABA182C7AAC700041EF60 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		6F3ABA1A2C7AC05C0041EF60 /* RefineSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefineSearchView.swift; sourceTree = "<group>"; };
 		6F42562C2C79DA5F009CC74F /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F42562F2C79DA5F009CC74F /* OrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrionApp.swift; sourceTree = "<group>"; };
 		6F4256312C79DA5F009CC74F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +101,9 @@
 		6F4256882C79E5A2009CC74F /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		6F42568A2C79E5E2009CC74F /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		6F42568C2C79E629009CC74F /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		9BD3B4A54B8F421405F98DF7 /* Pods-Orion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orion.debug.xcconfig"; path = "Target Support Files/Pods-Orion/Pods-Orion.debug.xcconfig"; sourceTree = "<group>"; };
+		BE7D1E91D81CB1AD9408DDD1 /* Pods-OrionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrionUITests.debug.xcconfig"; path = "Target Support Files/Pods-OrionUITests/Pods-OrionUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D47049B21AFB5CBE54B4B643 /* Pods-Orion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Orion.release.xcconfig"; path = "Target Support Files/Pods-Orion/Pods-Orion.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90CBFFF2556E219569B69EB1 /* Pods_OrionTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A26D70695E72DB6641FFB594 /* Pods_OrionUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +140,8 @@
 				6F42563F2C79DA62009CC74F /* OrionTests */,
 				6F4256492C79DA62009CC74F /* OrionUITests */,
 				6F42562D2C79DA5F009CC74F /* Products */,
+				A29FBCE93DF3572C884F54EC /* Pods */,
+				D9B3A911D887EF18333E4DCA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +210,7 @@
 				6F42567A2C79DEB9009CC74F /* MainTabView.swift */,
 				6F4256802C79DFF6009CC74F /* LoginView.swift */,
 				6F42568C2C79E629009CC74F /* EventDetailView.swift */,
+				6F3ABA1A2C7AC05C0041EF60 /* RefineSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,8 +251,31 @@
 			isa = PBXGroup;
 			children = (
 				6F4256762C79DDAC009CC74F /* ColorExtension.swift */,
+				6F3ABA182C7AAC700041EF60 /* ImagePicker.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A29FBCE93DF3572C884F54EC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9BD3B4A54B8F421405F98DF7 /* Pods-Orion.debug.xcconfig */,
+				D47049B21AFB5CBE54B4B643 /* Pods-Orion.release.xcconfig */,
+				47E146067BE9AB5B4148D3F8 /* Pods-OrionTests.debug.xcconfig */,
+				100DBEBBBE15F9162B0BACA4 /* Pods-OrionTests.release.xcconfig */,
+				BE7D1E91D81CB1AD9408DDD1 /* Pods-OrionUITests.debug.xcconfig */,
+				1899AB967B5F0893C8E6B5F2 /* Pods-OrionUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D9B3A911D887EF18333E4DCA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BA7C60673DA0CC7314475EC /* Pods_OrionTests.framework */,
+				62AE7418EA102612499226FB /* Pods_OrionUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +285,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F4256502C79DA62009CC74F /* Build configuration list for PBXNativeTarget "Orion" */;
 			buildPhases = (
+				E7A5107EA7FCA6D26925F3E3 /* [CP] Check Pods Manifest.lock */,
 				6F4256282C79DA5F009CC74F /* Sources */,
 				6F4256292C79DA5F009CC74F /* Frameworks */,
 				6F42562A2C79DA5F009CC74F /* Resources */,
@@ -260,6 +303,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F4256532C79DA62009CC74F /* Build configuration list for PBXNativeTarget "OrionTests" */;
 			buildPhases = (
+				E4E79DB59C22C71BDBC705CB /* [CP] Check Pods Manifest.lock */,
 				6F4256382C79DA62009CC74F /* Sources */,
 				6F4256392C79DA62009CC74F /* Frameworks */,
 				6F42563A2C79DA62009CC74F /* Resources */,
@@ -278,6 +322,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F4256562C79DA62009CC74F /* Build configuration list for PBXNativeTarget "OrionUITests" */;
 			buildPhases = (
+				00969621E5DB7C9C88D9A107 /* [CP] Check Pods Manifest.lock */,
 				6F4256422C79DA62009CC74F /* Sources */,
 				6F4256432C79DA62009CC74F /* Frameworks */,
 				6F4256442C79DA62009CC74F /* Resources */,
@@ -361,6 +406,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		00969621E5DB7C9C88D9A107 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrionUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4E79DB59C22C71BDBC705CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7A5107EA7FCA6D26925F3E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Orion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6F4256282C79DA5F009CC74F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -379,9 +493,11 @@
 				6F4256652C79DBFC009CC74F /* SearchResultsView.swift in Sources */,
 				6F42565D2C79DBAD009CC74F /* WelcomeView.swift in Sources */,
 				6F4256612C79DBD5009CC74F /* HomeView.swift in Sources */,
+				6F3ABA192C7AAC700041EF60 /* ImagePicker.swift in Sources */,
 				6F42568B2C79E5E2009CC74F /* CartViewModel.swift in Sources */,
 				6F4256702C79DC7C009CC74F /* CustomButton.swift in Sources */,
 				6F4256672C79DC27009CC74F /* BookingDetailsView.swift in Sources */,
+				6F3ABA1B2C7AC05C0041EF60 /* RefineSearchView.swift in Sources */,
 				6F4256632C79DBE8009CC74F /* SearchView.swift in Sources */,
 				6F4256302C79DA5F009CC74F /* OrionApp.swift in Sources */,
 				6F42567F2C79DF20009CC74F /* User.swift in Sources */,
@@ -430,6 +546,7 @@
 		6F42564E2C79DA62009CC74F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -493,6 +610,7 @@
 		6F42564F2C79DA62009CC74F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -548,7 +666,9 @@
 		};
 		6F4256512C79DA62009CC74F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BD3B4A54B8F421405F98DF7 /* Pods-Orion.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -557,11 +677,13 @@
 				DEVELOPMENT_TEAM = MD23DK6HVM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -577,7 +699,9 @@
 		};
 		6F4256522C79DA62009CC74F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D47049B21AFB5CBE54B4B643 /* Pods-Orion.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -586,11 +710,13 @@
 				DEVELOPMENT_TEAM = MD23DK6HVM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,6 +732,7 @@
 		};
 		6F4256542C79DA62009CC74F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47E146067BE9AB5B4148D3F8 /* Pods-OrionTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -626,6 +753,7 @@
 		};
 		6F4256552C79DA62009CC74F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 100DBEBBBE15F9162B0BACA4 /* Pods-OrionTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -646,6 +774,7 @@
 		};
 		6F4256572C79DA62009CC74F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE7D1E91D81CB1AD9408DDD1 /* Pods-OrionUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -664,6 +793,7 @@
 		};
 		6F4256582C79DA62009CC74F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1899AB967B5F0893C8E6B5F2 /* Pods-OrionUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

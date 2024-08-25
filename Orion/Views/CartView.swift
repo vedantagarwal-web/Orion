@@ -48,11 +48,13 @@ struct CartView: View {
                             }
                             .padding()
                             
-                            Button(action: viewModel.checkout) {
-                                Text("Checkout")
+                            Button(action: {
+                                // Proceed to payment or confirmation screen
+                            }) {
+                                Text("Pay \(viewModel.total, specifier: "%.2f")")
                                     .frame(maxWidth: .infinity)
                                     .padding()
-                                    .background(Color.red)
+                                    .background(Color.purple)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                                     .font(.system(size: 18, weight: .semibold, design: .rounded))
