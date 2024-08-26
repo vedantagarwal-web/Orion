@@ -14,14 +14,14 @@ struct CartItemRow: View {
             VStack(alignment: .leading, spacing: 5) {
                 Text(item.event.title)
                     .font(.headline)
-                Text("$\(item.event.price, specifier: "%.2f") each")
+                Text("\(CurrencyFormatter.formatPrice(item.event.price)) each")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
             
             Spacer()
             
-            Text("$\(item.event.price * Double(item.quantity), specifier: "%.2f")")
+            Text(CurrencyFormatter.formatPrice(item.event.price * Double(item.quantity)))
                 .font(.headline)
                 .foregroundColor(.accentBrand)
         }

@@ -61,9 +61,7 @@ struct ReviewFormView: View {
         // For now, we'll just simulate an API call with a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // Update the event with the new review
-            var updatedEvent = self.event
-            updatedEvent.reviews.append(review)
-            self.event = updatedEvent
+            event.reviews.append(review)
             
             // In a real app, you would update this in your database
             // For now, we'll just print it

@@ -3,13 +3,13 @@ import Combine
 
 class EventViewModel: ObservableObject {
     @Published var events: [Event] = [
-        Event(id: UUID(), title: "Summer Music Festival", date: Date().addingTimeInterval(86400 * 30), venue: "Central Park", location: "New York", description: "Annual summer music festival featuring top artists", price: 99.99, image: "event_1", category: "Music"),
-        Event(id: UUID(), title: "Tech Conference 2023", date: Date().addingTimeInterval(86400 * 60), venue: "Convention Center", location: "San Francisco", description: "Explore the latest in technology", price: 199.99, image: "event_2", category: "Technology"),
-        Event(id: UUID(), title: "Food & Wine Expo", date: Date().addingTimeInterval(86400 * 15), venue: "City Hall", location: "Chicago", description: "Taste the best food and wine from around the world", price: 79.99, image: "event_3", category: "Food")
+        Event(id: UUID(), title: "KL Music Festival", date: Date().addingTimeInterval(86400 * 30), venue: "KLCC Park", location: "Kuala Lumpur", description: "Annual music festival featuring top Malaysian and international artists", price: 199.99, image: "event_music", category: "Music"),
+        Event(id: UUID(), title: "Tech Summit 2023", date: Date().addingTimeInterval(86400 * 60), venue: "Kuala Lumpur Convention Centre", location: "Kuala Lumpur", description: "Explore the latest in Malaysian and global technology", price: 499.99, image: "event_tech", category: "Technology"),
+        Event(id: UUID(), title: "Penang Food Festival", date: Date().addingTimeInterval(86400 * 15), venue: "George Town", location: "Penang", description: "Taste the best of Penang's world-renowned cuisine", price: 79.99, image: "event_food", category: "Food")
     ]
     @Published var searchResults: [Event] = []
-    @Published var locations: [String] = ["All", "New York", "San Francisco", "Chicago", "Los Angeles"]
-    @Published var categories: [String] = ["All", "Music", "Technology", "Food", "Sports", "Art"]
+    @Published var locations: [String] = ["All", "Kuala Lumpur", "Penang", "Johor Bahru", "Kota Kinabalu", "Kuching", "Malacca", "Ipoh"]
+    @Published var categories: [String] = ["All", "Music", "Technology", "Food", "Sports", "Art", "Culture"]
     
     init() {
         searchResults = events
@@ -36,7 +36,7 @@ class EventViewModel: ObservableObject {
             return matchesLocation && matchesCategory && matchesPrice
         }
         
-        print("Applied filters - Location: \(location), Category: \(category), Price range: $\(minPrice)-$\(maxPrice)")
+        print("Applied filters - Location: \(location), Category: \(category), Price range: \(CurrencyFormatter.formatPrice(minPrice))-\(CurrencyFormatter.formatPrice(maxPrice))")
     }
     
     func resetFilters() {

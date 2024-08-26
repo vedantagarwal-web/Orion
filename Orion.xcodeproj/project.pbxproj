@@ -26,6 +26,7 @@
 		6F3ABAD22C7BAE470041EF60 /* PieSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3ABAD12C7BAE470041EF60 /* PieSlice.swift */; };
 		6F3ABAD42C7BAECD0041EF60 /* EventOrganizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3ABAD32C7BAECD0041EF60 /* EventOrganizerViewModel.swift */; };
 		6F3ABAD62C7BB0BA0041EF60 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3ABAD52C7BB0BA0041EF60 /* AccountSettingsView.swift */; };
+		6F3ABAD82C7D03B00041EF60 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3ABAD72C7D03AF0041EF60 /* CurrencyFormatter.swift */; };
 		6F4256302C79DA5F009CC74F /* OrionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F42562F2C79DA5F009CC74F /* OrionApp.swift */; };
 		6F4256322C79DA5F009CC74F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4256312C79DA5F009CC74F /* ContentView.swift */; };
 		6F4256342C79DA62009CC74F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F4256332C79DA62009CC74F /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		6F3ABAD12C7BAE470041EF60 /* PieSlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieSlice.swift; sourceTree = "<group>"; };
 		6F3ABAD32C7BAECD0041EF60 /* EventOrganizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventOrganizerViewModel.swift; sourceTree = "<group>"; };
 		6F3ABAD52C7BB0BA0041EF60 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		6F3ABAD72C7D03AF0041EF60 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		6F42562C2C79DA5F009CC74F /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F42562F2C79DA5F009CC74F /* OrionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrionApp.swift; sourceTree = "<group>"; };
 		6F4256312C79DA5F009CC74F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				6F4256762C79DDAC009CC74F /* ColorExtension.swift */,
 				6F3ABA2C2C7B39590041EF60 /* DateFormatter.swift */,
+				6F3ABAD72C7D03AF0041EF60 /* CurrencyFormatter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				6F4256302C79DA5F009CC74F /* OrionApp.swift in Sources */,
 				6F3ABA252C7B383D0041EF60 /* ReviewView.swift in Sources */,
 				6F3ABA292C7B38F60041EF60 /* NotificationService.swift in Sources */,
+				6F3ABAD82C7D03B00041EF60 /* CurrencyFormatter.swift in Sources */,
 				6F42567F2C79DF20009CC74F /* User.swift in Sources */,
 				6F42567D2C79DEF4009CC74F /* UserViewModel.swift in Sources */,
 				6F3ABAD22C7BAE470041EF60 /* PieSlice.swift in Sources */,

@@ -33,7 +33,7 @@ struct EventDetailView: View {
                     Text(event.description)
                         .padding(.top)
                     
-                    Text("Price: $\(event.price, specifier: "%.2f")")
+                    Text(CurrencyFormatter.formatPrice(event.price))
                         .font(.headline)
                         .padding(.top)
                     

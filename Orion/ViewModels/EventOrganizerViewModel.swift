@@ -28,8 +28,22 @@ class EventOrganizerViewModel: ObservableObject {
     func fetchEvents() {
         // In a real app, this would be an API call
         self.events = [
-            Event(title: "Summer Festival", date: Date().addingTimeInterval(86400 * 30), venue: "Central Park", location: "New York", description: "Annual summer music festival", price: 59.99, image: "summer_festival", category: "Music"),
-            Event(title: "Tech Conference", date: Date().addingTimeInterval(86400 * 60), venue: "Convention Center", location: "San Francisco", description: "Annual tech conference", price: 199.99, image: "tech_conference", category: "Technology")
+            Event(title: "KL Music Festival",
+                  date: Date().addingTimeInterval(86400 * 30),
+                  venue: "KLCC Park",
+                  location: "Kuala Lumpur",
+                  description: "Annual music festival featuring top Malaysian artists",
+                  price: 299.99,
+                  image: "event_music",
+                  category: "Music"),
+            Event(title: "Malaysia Tech Week",
+                  date: Date().addingTimeInterval(86400 * 60),
+                  venue: "Kuala Lumpur Convention Centre",
+                  location: "Kuala Lumpur",
+                  description: "Malaysia's premier technology conference",
+                  price: 599.99,
+                  image: "event_tech",
+                  category: "Technology")
         ]
     }
     
