@@ -33,3 +33,4 @@ struct SearchBar: View {
         .cornerRadius(10)
     }
 }
+

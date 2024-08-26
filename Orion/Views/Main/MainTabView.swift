@@ -1,26 +1,34 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var selectedTab = 0
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            TabView(selection: $selectedTab) {
-                HomeView()
-                    .tag(0)
-                
-                SearchView()
-                    .tag(1)
-                
-                CartView()
-                    .tag(2)
-                
-                ProfileView()
-                    .tag(3)
-            }
+        TabView {
+            HomeView()
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("Home")
+                }
             
-            CustomTabBar(selectedTab: $selectedTab)
+            SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
+            
+            CartView()
+                .tabItem {
+                    Image(systemName: "cart.fill")
+                    Text("Cart")
+                }
+            
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Profile")
+                }
         }
-        .ignoresSafeArea(.keyboard)
+        .accentColor(.accentBrand)
     }
 }

@@ -1,21 +1,17 @@
 import SwiftUI
 
 struct EventDetailView: View {
-    @EnvironmentObject var cartViewModel: CartViewModel
     @EnvironmentObject var userViewModel: UserViewModel
-    @State private var quantity = 1
-    @State private var showingReviewSheet = false
-    
     let event: Event
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Image(event.image)
+                Image(systemName: event.image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 250)
-                    .clipped()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 200)
+                    .foregroundColor(.purple)
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(event.title)
@@ -26,36 +22,40 @@ struct EventDetailView: View {
                         Image(systemName: "calendar")
                         Text(event.date, style: .date)
                     }
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                     
                     HStack {
                         Image(systemName: "mappin.and.ellipse")
                         Text(event.venue)
                     }
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                     
                     Text(event.description)
                         .padding(.top)
                     
+                    Text("Price: $\(event.price, specifier: "%.2f")")
+                        .font(.headline)
+                        .padding(.top)
+                    
                     HStack {
-                        Text("Price: $\(event.price, specifier: "%.2f")")
-                            .fontWeight(.semibold)
-                        Spacer()
-                        Stepper("Quantity: \(quantity)", value: $quantity, in: 1...10)
-                    }
-                    .padding(.top)
-                    
-                    CustomButton(title: "Add to Cart") {
-                        cartViewModel.addToCart(event, quantity: quantity)
-                    }
-                    .padding(.top)
-                    
-                    if !event.reviews.isEmpty {
-                        ReviewView(reviews: event.reviews)
-                    }
-                    
-                    CustomButton(title: "Write a Review") {
-                        showingReviewSheet = true
+                        Button(action: {
+                            userViewModel.toggleFavorite(event)
+                        }) {
+                            Image(systemName: userViewModel.isFavorite(event) ? "heart.fill" : "heart")
+                                .foregroundColor(.red)
+                        }
+                        .padding(.trailing)
+                        
+                        Button(action: {
+                            // Book ticket action
+                        }) {
+                            Text("Book Ticket")
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.purple)
+                                .cornerRadius(10)
+                        }
                     }
                     .padding(.top)
                 }
@@ -63,13 +63,6 @@ struct EventDetailView: View {
             }
         }
         .navigationTitle("Event Details")
-        .navigationBarItems(trailing: Button(action: {
-            userViewModel.toggleFavorite(event)
-        }) {
-            Image(systemName: userViewModel.isFavorite(event) ? "heart.fill" : "heart")
-        })
-        .sheet(isPresented: $showingReviewSheet) {
-            // Add ReviewFormView here
-        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

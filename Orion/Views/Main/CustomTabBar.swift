@@ -1,11 +1,3 @@
-//
-//  CustomTabBar.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/25/24.
-//
-
-import Foundation
 import SwiftUI
 
 struct CustomTabBar: View {

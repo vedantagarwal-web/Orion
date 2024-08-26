@@ -1,39 +1,28 @@
-//
-//  FilterView.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/25/24.
-//
-
-import Foundation
 import SwiftUI
 
 struct FilterView: View {
     @ObservedObject var viewModel: EventViewModel
+    @Binding var selectedLocation: String
+    @Binding var selectedCategory: String
+    @Binding var minPrice: Double
+    @Binding var maxPrice: Double
     @Environment(\.presentationMode) var presentationMode
-    
-    @State private var selectedDate = Date()
-    @State private var selectedCategory: String?
-    @State private var minPrice: Double = 0
-    @State private var maxPrice: Double = 1000
     
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Date")) {
-                    DatePicker("Select Date", selection: $selectedDate, displayedComponents: .date)
+                Section(header: Text("Location")) {
+                    Picker("Location", selection: $selectedLocation) {
+                        ForEach(viewModel.locations, id: \.self) {
+                            Text($0)
+                        }
+                    }
                 }
                 
                 Section(header: Text("Category")) {
-                    ForEach(viewModel.categories, id: \.self) { category in
-                        Button(action: { selectedCategory = category }) {
-                            HStack {
-                                Text(category)
-                                Spacer()
-                                if selectedCategory == category {
-                                    Image(systemName: "checkmark")
-                                }
-                            }
+                    Picker("Category", selection: $selectedCategory) {
+                        ForEach(viewModel.categories, id: \.self) {
+                            Text($0)
                         }
                     }
                 }
@@ -53,7 +42,7 @@ struct FilterView: View {
             }
             .navigationTitle("Filters")
             .navigationBarItems(trailing: Button("Apply") {
-                viewModel.applyFilters(date: selectedDate, category: selectedCategory, minPrice: minPrice, maxPrice: maxPrice)
+                viewModel.applyFilters(location: selectedLocation, category: selectedCategory, minPrice: minPrice, maxPrice: maxPrice)
                 presentationMode.wrappedValue.dismiss()
             })
         }

@@ -1,11 +1,3 @@
-//
-//  PurchaseHistoryView.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/25/24.
-//
-
-import Foundation
 import SwiftUI
 
 struct PurchaseHistoryView: View {
@@ -13,8 +5,8 @@ struct PurchaseHistoryView: View {
     
     // This would typically come from a separate view model or service
     let purchaseHistory: [PurchaseItem] = [
-        PurchaseItem(event: Event(title: "Summer Festival", date: Date(), venue: "Central Park", description: "Annual summer music festival", price: 59.99, image: "summer_festival"), purchaseDate: Date().addingTimeInterval(-86400 * 7), quantity: 2),
-        PurchaseItem(event: Event(title: "Tech Conference", date: Date().addingTimeInterval(86400 * 30), venue: "Convention Center", description: "Annual tech conference", price: 199.99, image: "tech_conference"), purchaseDate: Date().addingTimeInterval(-86400 * 14), quantity: 1)
+        PurchaseItem(event: Event(title: "Summer Festival", date: Date(), venue: "Central Park", location: "New York", description: "Annual summer music festival", price: 59.99, image: "summer_festival", category: "Music"), purchaseDate: Date().addingTimeInterval(-86400 * 7), quantity: 2),
+        PurchaseItem(event: Event(title: "Tech Conference", date: Date().addingTimeInterval(86400 * 30), venue: "Convention Center", location: "San Francisco", description: "Annual tech conference", price: 199.99, image: "tech_conference", category: "Technology"), purchaseDate: Date().addingTimeInterval(-86400 * 14), quantity: 1)
     ]
     
     var body: some View {

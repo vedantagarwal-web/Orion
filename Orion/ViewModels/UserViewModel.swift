@@ -4,65 +4,127 @@ import Combine
 class UserViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var isLoggedIn: Bool = false
-    @Published var favoriteEvents: [Event] = []
+    @Published private var favoriteEventIds: Set<UUID> = []
     
-    private var cancellables = Set<AnyCancellable>()
+    private let userDefaultsKey = "CurrentUser"
+    private let favoriteEventsKey = "FavoriteEvents"
     
-    func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
-        // Simulate network request
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // In a real app, validate credentials against a server
-            if email == "user@example.com" && password == "password" {
-                self.currentUser = User(id: UUID(), name: "John Doe", email: email)
-                self.isLoggedIn = true
-                completion(true)
-            } else {
-                completion(false)
-            }
+    init() {
+        loadUser()
+        loadFavoriteEvents()
+    }
+    
+    // MARK: - Authentication
+    
+    func login(email: String, password: String) -> Bool {
+        // For demo purposes, we'll use a simple check
+        if email == "demo@example.com" && password == "password" {
+            let user = User(id: UUID(), name: "Demo User", email: email, profileImageUrl: nil)
+            self.currentUser = user
+            self.isLoggedIn = true
+            saveUser()
+            return true
         }
+        return false
+    }
+    
+    func signup(name: String, email: String, password: String) -> Bool {
+        // In a real app, you'd check if the email is already in use
+        let user = User(id: UUID(), name: name, email: email, profileImageUrl: nil)
+        self.currentUser = user
+        self.isLoggedIn = true
+        saveUser()
+        return true
     }
     
     func logout() {
-        currentUser = nil
-        isLoggedIn = false
-        favoriteEvents = []
+        self.currentUser = nil
+        self.isLoggedIn = false
+        UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+        // Clear favorite events when logging out
+        self.favoriteEventIds.removeAll()
+        saveFavoriteEvents()
     }
     
-    func signup(name: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
-        // Simulate network request
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            // In a real app, send user data to a server
-            self.currentUser = User(id: UUID(), name: name, email: email)
-            self.isLoggedIn = true
-            completion(true)
-        }
-    }
+    // MARK: - Profile Management
     
     func updateProfile(name: String, email: String) {
         guard var user = currentUser else { return }
         user.name = name
         user.email = email
-        currentUser = user
-        // In a real app, send updated profile to a server
+        self.currentUser = user
+        saveUser()
+    }
+    
+    func updatePassword(currentPassword: String, newPassword: String) -> Bool {
+        // For demo purposes, we'll just check if the current password is correct
+        if currentPassword == "password" {
+            // In a real app, you'd hash the new password and save it
+            print("Password updated successfully")
+            return true
+        }
+        return false
     }
     
     func updateProfileImage(url: String) {
         guard var user = currentUser else { return }
         user.profileImageUrl = url
-        currentUser = user
-        // In a real app, send updated profile to a server
+        self.currentUser = user
+        saveUser()
     }
     
+    // MARK: - Favorite Events
+    
     func toggleFavorite(_ event: Event) {
-        if let index = favoriteEvents.firstIndex(where: { $0.id == event.id }) {
-            favoriteEvents.remove(at: index)
+        if favoriteEventIds.contains(event.id) {
+            favoriteEventIds.remove(event.id)
         } else {
-            favoriteEvents.append(event)
+            favoriteEventIds.insert(event.id)
         }
-        // In a real app, sync favorites with a server
+        saveFavoriteEvents()
     }
     
     func isFavorite(_ event: Event) -> Bool {
-        favoriteEvents.contains(where: { $0.id == event.id })
+        favoriteEventIds.contains(event.id)
     }
+    
+    func getFavoriteEvents() -> [Event] {
+        // This is a placeholder. In a real app, you'd fetch the actual events from a data source
+        return Event.sampleEvents.filter { favoriteEventIds.contains($0.id) }
+    }
+    
+    // MARK: - Data Persistence
+    
+    private func saveUser() {
+        if let encoded = try? JSONEncoder().encode(currentUser) {
+            UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
+        }
+    }
+    
+    private func loadUser() {
+        if let userData = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let user = try? JSONDecoder().decode(User.self, from: userData) {
+            self.currentUser = user
+            self.isLoggedIn = true
+        }
+    }
+    
+    private func saveFavoriteEvents() {
+        UserDefaults.standard.set(Array(favoriteEventIds), forKey: favoriteEventsKey)
+    }
+    
+    private func loadFavoriteEvents() {
+        if let favoriteIds = UserDefaults.standard.array(forKey: favoriteEventsKey) as? [UUID] {
+            self.favoriteEventIds = Set(favoriteIds)
+        }
+    }
+}
+
+// MARK: - Sample Data
+extension Event {
+    static let sampleEvents = [
+        Event(id: UUID(), title: "Summer Music Festival", date: Date().addingTimeInterval(86400 * 30), venue: "Central Park", location: "New York", description: "Annual summer music festival featuring top artists", price: 99.99, image: "music.note.list", category: "Music"),
+        Event(id: UUID(), title: "Tech Conference 2023", date: Date().addingTimeInterval(86400 * 60), venue: "Convention Center", location: "San Francisco", description: "Explore the latest in technology", price: 199.99, image: "desktopcomputer", category: "Technology"),
+        Event(id: UUID(), title: "Food & Wine Expo", date: Date().addingTimeInterval(86400 * 15), venue: "City Hall", location: "Chicago", description: "Taste the best food and wine from around the world", price: 79.99, image: "fork.knife", category: "Food")
+    ]
 }

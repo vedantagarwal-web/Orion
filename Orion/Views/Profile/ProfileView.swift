@@ -2,103 +2,75 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var userViewModel: UserViewModel
-    @State private var showingEditProfile = false
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.primaryBrand.edgesIgnoringSafeArea(.all)
-                
-                ScrollView {
-                    VStack(spacing: 20) {
-                        ProfileHeader(user: userViewModel.currentUser)
-                        
-                        NavigationLink(destination: FavoriteEventsView()) {
-                            ProfileMenuItem(title: "Favorite Events", icon: "heart.fill")
+            ScrollView {
+                VStack(spacing: 20) {
+                    Image(systemName: "person.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                        .foregroundColor(.accentBrand)
+                    
+                    Text(userViewModel.currentUser?.name ?? "User Name")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Text(userViewModel.currentUser?.email ?? "user@example.com")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    
+                    VStack(spacing: 15) {
+                        NavigationLink(destination: Text("My Tickets")) {
+                            ProfileRowView(title: "My Tickets", icon: "ticket")
                         }
                         
-                        NavigationLink(destination: PurchaseHistoryView()) {
-                            ProfileMenuItem(title: "Purchase History", icon: "bag.fill")
+                        NavigationLink(destination: Text("Favorite Events")) {
+                            ProfileRowView(title: "Favorite Events", icon: "heart")
                         }
                         
-                        NavigationLink(destination: NotificationSettingsView()) {
-                            ProfileMenuItem(title: "Notification Settings", icon: "bell.fill")
-                        }
-                        
-                        Button(action: {
-                            userViewModel.logout()
-                        }) {
-                            ProfileMenuItem(title: "Log Out", icon: "arrow.right.square.fill")
+                        NavigationLink(destination: Text("Settings")) {
+                            ProfileRowView(title: "Settings", icon: "gear")
                         }
                     }
                     .padding()
+                    .background(Color.secondaryBrand)
+                    .cornerRadius(10)
+                    
+                    Button(action: {
+                        userViewModel.logout()
+                    }) {
+                        Text("Log Out")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.accentBrand)
+                            .cornerRadius(10)
+                    }
+                    .padding(.top)
                 }
+                .padding()
             }
+            .background(Color.primaryBrand.edgesIgnoringSafeArea(.all))
             .navigationTitle("Profile")
-            .navigationBarItems(trailing: Button("Edit") {
-                showingEditProfile = true
-            })
-            .sheet(isPresented: $showingEditProfile) {
-                EditProfileView()
-            }
         }
     }
 }
 
-struct ProfileHeader: View {
-    let user: User?
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            if let imageUrl = user?.profileImageUrl, let url = URL(string: imageUrl) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                } placeholder: {
-                    ProgressView()
-                }
-            } else {
-                Image(systemName: "person.circle.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.gray)
-            }
-            
-            Text(user?.name ?? "Guest")
-                .font(.title2)
-                .fontWeight(.bold)
-            
-            Text(user?.email ?? "")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-        }
-    }
-}
-
-struct ProfileMenuItem: View {
+struct ProfileRowView: View {
     let title: String
     let icon: String
     
     var body: some View {
         HStack {
             Image(systemName: icon)
-                .foregroundColor(.highlightBrand)
-                .frame(width: 30)
-            
+                .foregroundColor(.accentBrand)
             Text(title)
                 .foregroundColor(.white)
-            
             Spacer()
-            
             Image(systemName: "chevron.right")
                 .foregroundColor(.gray)
         }
-        .padding()
-        .background(Color.secondaryBrand)
-        .cornerRadius(10)
     }
 }

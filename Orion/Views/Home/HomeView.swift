@@ -1,56 +1,44 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = EventViewModel()
-    @State private var searchText = ""
+    let events = [
+        Event(id: UUID(), title: "Summer Music Festival", date: Date().addingTimeInterval(86400 * 30), venue: "Central Park", location: "New York", description: "Annual summer music festival featuring top artists", price: 99.99, image: "event_1", category: "Music"),
+        Event(id: UUID(), title: "Tech Conference 2023", date: Date().addingTimeInterval(86400 * 60), venue: "Convention Center", location: "San Francisco", description: "Explore the latest in technology", price: 199.99, image: "event_2", category: "Technology"),
+        Event(id: UUID(), title: "Food & Wine Expo", date: Date().addingTimeInterval(86400 * 15), venue: "City Hall", location: "Chicago", description: "Taste the best food and wine from around the world", price: 79.99, image: "event_3", category: "Food")
+    ]
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color.primaryBrand.edgesIgnoringSafeArea(.all)
-                
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        SearchBar(text: $searchText, placeholder: "Search events...")
-                            .padding(.horizontal)
-                        
-                        Text("Featured Events")
-                            .font(.system(size: 24, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 20) {
-                                ForEach(viewModel.featuredEvents) { event in
-                                    NavigationLink(destination: EventDetailView(event: event)) {
-                                        FeaturedEventCard(event: event)
-                                    }
-                                    .buttonStyle(PlainButtonStyle())
-                                }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Featured Events")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            ForEach(events) { event in
+                                EventCard(event: event)
                             }
-                            .padding(.horizontal)
                         }
-                        
-                        Text("Upcoming Events")
-                            .font(.system(size: 24, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                            .padding(.horizontal)
-                        
-                        ForEach(viewModel.upcomingEvents) { event in
-                            NavigationLink(destination: EventDetailView(event: event)) {
-                                EventRow(event: event)
-                            }
-                            .buttonStyle(PlainButtonStyle())
+                        .padding(.horizontal)
+                    }
+                    
+                    Text("Upcoming Events")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
+                    
+                    ForEach(events) { event in
+                        NavigationLink(destination: EventDetailView(event: event)) {
+                            EventRow(event: event)
                         }
                     }
-                    .padding(.vertical)
                 }
+                .padding(.vertical)
             }
-            .navigationTitle("Orion")
-            .navigationBarTitleDisplayMode(.large)
-        }
-        .onAppear {
-            viewModel.fetchEvents()
+            .navigationTitle("Discover Events")
         }
     }
 }

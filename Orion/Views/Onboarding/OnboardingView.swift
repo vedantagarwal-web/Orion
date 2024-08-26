@@ -1,18 +1,3 @@
-//
-//  OnboardingView.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/25/24.
-//
-
-import Foundation
-//
-//  OnboardinView.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/25/24.
-//
-
 import SwiftUI
 
 struct OnboardingView: View {

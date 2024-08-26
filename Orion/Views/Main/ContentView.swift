@@ -1,14 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject private var userViewModel: UserViewModel
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+    @EnvironmentObject var userViewModel: UserViewModel
     
     var body: some View {
         Group {
-            if !hasCompletedOnboarding {
-                OnboardingView()
-            } else if userViewModel.isLoggedIn {
+            if userViewModel.isLoggedIn {
                 MainTabView()
             } else {
                 WelcomeView()

@@ -1,19 +1,12 @@
-//
-//  FavoriteEventsView.swift
-//  Orion
-//
-//  Created by Vedant Agarwal on 8/25/24.
-//
-
-import Foundation
 import SwiftUI
 
 struct FavoriteEventsView: View {
     @EnvironmentObject var userViewModel: UserViewModel
+    @State private var favoriteEvents: [Event] = []
     
     var body: some View {
         List {
-            ForEach(userViewModel.favoriteEvents) { event in
+            ForEach(favoriteEvents) { event in
                 NavigationLink(destination: EventDetailView(event: event)) {
                     EventRow(event: event)
                 }
@@ -22,12 +15,24 @@ struct FavoriteEventsView: View {
         }
         .navigationTitle("Favorite Events")
         .listStyle(PlainListStyle())
+        .onAppear {
+            loadFavoriteEvents()
+        }
+    }
+    
+    private func loadFavoriteEvents() {
+        // Assuming userViewModel has a method to get favorite events
+        favoriteEvents = userViewModel.getFavoriteEvents()
     }
     
     private func removeEvents(at offsets: IndexSet) {
         for index in offsets {
-            let event = userViewModel.favoriteEvents[index]
+            let event = favoriteEvents[index]
             userViewModel.toggleFavorite(event)
         }
+        // Reload favorite events after removal
+        loadFavoriteEvents()
     }
 }
+
+// Assuming you have an EventRow view, if not, here's a simple implementation:
